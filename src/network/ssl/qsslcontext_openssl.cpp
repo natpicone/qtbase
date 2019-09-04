@@ -324,7 +324,7 @@ init_context:
     q_DH_free(dh);
 
 #ifndef OPENSSL_NO_EC
-#if OPENSSL_VERSION_NUMBER >= 0x10002000L
+#if OPENSSL_VERSION_NUMBER >= 0x10002000L && OPENSSL_VERSION_NUMBER < 0x10100000L
     if (q_SSLeay() >= 0x10002000L) {
         q_SSL_CTX_ctrl(sslContext->ctx, SSL_CTRL_SET_ECDH_AUTO, 1, NULL);
     } else
