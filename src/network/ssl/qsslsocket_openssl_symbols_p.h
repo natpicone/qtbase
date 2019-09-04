@@ -214,21 +214,17 @@ unsigned char * q_ASN1_STRING_data(ASN1_STRING *a);
 int q_ASN1_STRING_length(ASN1_STRING *a);
 int q_ASN1_STRING_to_UTF8(unsigned char **a, ASN1_STRING *b);
 long q_BIO_ctrl(BIO *a, int b, long c, void *d);
-int q_BIO_free(BIO *a);
-BIO *q_BIO_new(BIO_METHOD *a);
+Q_AUTOTEST_EXPORT int q_BIO_free(BIO *a);
+Q_AUTOTEST_EXPORT BIO *q_BIO_new(const BIO_METHOD *a);
 BIO *q_BIO_new_mem_buf(void *a, int b);
 int q_BIO_read(BIO *a, void *b, int c);
-BIO_METHOD *q_BIO_s_mem();
-int q_BIO_write(BIO *a, const void *b, int c);
+Q_AUTOTEST_EXPORT const BIO_METHOD *q_BIO_s_mem();
+Q_AUTOTEST_EXPORT int q_BIO_write(BIO *a, const void *b, int c);
 int q_BN_num_bits(const BIGNUM *a);
 #ifndef OPENSSL_NO_EC
 const EC_GROUP* q_EC_KEY_get0_group(const EC_KEY* k);
 int q_EC_GROUP_get_degree(const EC_GROUP* g);
 #endif
-int q_CRYPTO_num_locks();
-void q_CRYPTO_set_locking_callback(void (*a)(int, int, const char *, int));
-void q_CRYPTO_set_id_callback(unsigned long (*a)());
-void q_CRYPTO_free(void *a);
 DSA *q_DSA_new();
 void q_DSA_free(DSA *a);
 int q_DSA_bits(DSA *a);
@@ -502,6 +498,7 @@ DSA *q_d2i_DSAPrivateKey(DSA **a, unsigned char **pp, long length);
 #define q_OpenSSL_add_all_algorithms() q_OPENSSL_add_all_algorithms_conf()
 void q_OPENSSL_add_all_algorithms_noconf();
 void q_OPENSSL_add_all_algorithms_conf();
+void q_OPENSSL_free(void *addr);
 int q_SSL_CTX_load_verify_locations(SSL_CTX *ctx, const char *CAfile, const char *CApath);
 long q_SSLeay();
 const char *q_SSLeay_version(int type);
