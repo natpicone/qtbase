@@ -304,9 +304,6 @@ DEFINEFUNC2(void *, SSL_get_ex_data, const SSL *ssl, ssl, int idx, idx, return N
 DEFINEFUNC2(void, SSL_set_psk_client_callback, SSL* ssl, ssl, q_psk_client_callback_t callback, callback, return, DUMMYARG)
 #endif
 #if OPENSSL_VERSION_NUMBER >= 0x10000000L
-#ifndef OPENSSL_NO_SSL2
-DEFINEFUNC(const SSL_METHOD *, SSLv2_client_method, DUMMYARG, DUMMYARG, return 0, return)
-#endif
 #ifndef OPENSSL_NO_SSL3_METHOD
 DEFINEFUNC(const SSL_METHOD *, SSLv3_client_method, DUMMYARG, DUMMYARG, return 0, return)
 #endif
@@ -315,9 +312,6 @@ DEFINEFUNC(const SSL_METHOD *, TLSv1_client_method, DUMMYARG, DUMMYARG, return 0
 #if OPENSSL_VERSION_NUMBER >= 0x10001000L
 DEFINEFUNC(const SSL_METHOD *, TLSv1_1_client_method, DUMMYARG, DUMMYARG, return 0, return)
 DEFINEFUNC(const SSL_METHOD *, TLSv1_2_client_method, DUMMYARG, DUMMYARG, return 0, return)
-#endif
-#ifndef OPENSSL_NO_SSL2
-DEFINEFUNC(const SSL_METHOD *, SSLv2_server_method, DUMMYARG, DUMMYARG, return 0, return)
 #endif
 #ifndef OPENSSL_NO_SSL3_METHOD
 DEFINEFUNC(const SSL_METHOD *, SSLv3_server_method, DUMMYARG, DUMMYARG, return 0, return)
@@ -329,17 +323,11 @@ DEFINEFUNC(const SSL_METHOD *, TLSv1_1_server_method, DUMMYARG, DUMMYARG, return
 DEFINEFUNC(const SSL_METHOD *, TLSv1_2_server_method, DUMMYARG, DUMMYARG, return 0, return)
 #endif
 #else
-#ifndef OPENSSL_NO_SSL2
-DEFINEFUNC(SSL_METHOD *, SSLv2_client_method, DUMMYARG, DUMMYARG, return 0, return)
-#endif
 #ifndef OPENSSL_NO_SSL3_METHOD
 DEFINEFUNC(SSL_METHOD *, SSLv3_client_method, DUMMYARG, DUMMYARG, return 0, return)
 #endif
 DEFINEFUNC(SSL_METHOD *, SSLv23_client_method, DUMMYARG, DUMMYARG, return 0, return)
 DEFINEFUNC(SSL_METHOD *, TLSv1_client_method, DUMMYARG, DUMMYARG, return 0, return)
-#ifndef OPENSSL_NO_SSL2
-DEFINEFUNC(SSL_METHOD *, SSLv2_server_method, DUMMYARG, DUMMYARG, return 0, return)
-#endif
 #ifndef OPENSSL_NO_SSL3_METHOD
 DEFINEFUNC(SSL_METHOD *, SSLv3_server_method, DUMMYARG, DUMMYARG, return 0, return)
 #endif
@@ -904,9 +892,6 @@ bool q_resolveOpenSslSymbols()
     RESOLVEFUNC(SSL_set_psk_client_callback)
 #endif
     RESOLVEFUNC(SSL_write)
-#ifndef OPENSSL_NO_SSL2
-    RESOLVEFUNC(SSLv2_client_method)
-#endif
 #ifndef OPENSSL_NO_SSL3_METHOD
     RESOLVEFUNC(SSLv3_client_method)
 #endif
@@ -915,9 +900,6 @@ bool q_resolveOpenSslSymbols()
 #if OPENSSL_VERSION_NUMBER >= 0x10001000L
     RESOLVEFUNC(TLSv1_1_client_method)
     RESOLVEFUNC(TLSv1_2_client_method)
-#endif
-#ifndef OPENSSL_NO_SSL2
-    RESOLVEFUNC(SSLv2_server_method)
 #endif
 #ifndef OPENSSL_NO_SSL3_METHOD
     RESOLVEFUNC(SSLv3_server_method)
